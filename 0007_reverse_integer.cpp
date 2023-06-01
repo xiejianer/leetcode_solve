@@ -1,11 +1,11 @@
 #include <iostream>
+#include <climits>
 using namespace std;
 
 class Solution {
 public:
     int reverse(int x) {
-        int max_num = (1 << 31) - 1;
-        if (x < 0 && x == max_num * (-1) - 1) return 0;
+        if (x < 0 && x == INT_MAX * (-1) - 1) return 0;
         int flag = 1;
         if (x < 0) {
             flag = - 1;
@@ -23,16 +23,16 @@ public:
             x /= 10;
         }
         if (flag > 0) {
-            if ((max_num - x) / 10 < res) {
+            if ((INT_MAX - x) / 10 < res) {
                 return 0;
             }
         } else {
-            if ((max_num - x + 1) / 10 < res) {
+            if ((INT_MAX - x + 1) / 10 < res) {
                 return 0;
             }
         }
         res = res * 10 + x;
-        return res * flag
+        return res * flag;
     }
 };
 
